@@ -2,6 +2,7 @@ package demo.controller;
 
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,6 +59,11 @@ public class IndexController {
 	
 	@PostMapping(value = "/" , produces = "application/json")
 	public ResponseEntity<Usuario> cadastrar(@RequestBody Usuario usuario){
+		
+		for (int pos = 0; pos < usuario.getTelefones().size(); pos ++) {
+			usuario.getTelefones().get(pos).setUsuario(usuario);
+			
+		}
 		
 		Usuario usuarioSalvo = usuarioRepository.save(usuario);
 		

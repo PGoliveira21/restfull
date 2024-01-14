@@ -19,18 +19,30 @@ public class Usuario implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
+public List<Telefone> getTelefones() {
+	return telefones;
+}
+
+public void setTelefones(List<Telefone> telefones) {
+	this.telefones = telefones;
+}
+
+public static long getSerialversionuid() {
+	return serialVersionUID;
+}
+
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
 private Long id;
 
 private String senha;
 
-@OneToMany(mappedBy = "usuario", orphanRemoval = true, cascade = CascadeType.ALL)
-private List<Telefone> telefones = new ArrayList<>();
-
 private String login;
 
 private String nome;
+
+@OneToMany(mappedBy = "usuario", orphanRemoval = true, cascade = CascadeType.ALL)
+private List<Telefone> telefones = new ArrayList<>();
 
 public Long getId() {
 	return id;
